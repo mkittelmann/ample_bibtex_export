@@ -1,0 +1,15 @@
+% my $result = stash 'result' || undef;
+% for my $r ( @{$result->{'hits'}->{'hits'}} ) {
+
+@book{ <%== $r -> {'_source'} -> {'_id'} %>, 
+author = {<%== $r -> {'_source'} -> {'data'} -> {'author'}%>},
+title = {<%== $r -> {'_source'} -> {'data'} -> {'title'}%>},
+year = {<%== $r -> {'_source'} -> {'data'} -> {'imprint'}[0] -> {'imprint_date'} %>},
+note = {<%== $r -> {'_source'}-> {'data'} -> {'notes'}[0] %>},
+publisher = {<%== $r -> {'_source'}-> {'data'} -> {'imprint'}[0] -> {'imprint_name'} %>},
+address = {<%== $r -> {'_source'}-> {'data'} -> {'imprint'}[0] -> {'imprint_place'} %>},
+annote = { This record was exported from the Incunabula Short Title Catalogue (ISTC): http://data.cerl.org/istc/
+<%==  $r -> {'_source'} -> {'_id'} %>}
+}
+
+%}

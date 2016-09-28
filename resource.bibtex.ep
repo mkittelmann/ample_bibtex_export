@@ -1,0 +1,12 @@
+% my $record = stash 'record' || undef;
+
+@book{ <%== $record -> {'_id'} %>, 
+author = {<%== $record -> {'data'} -> {'author'}%>},
+title = {<%== $record -> {'data'} -> {'title'}%>},
+year = {<%== $record -> {'data'} -> {'imprint'}[0] -> {'imprint_date'} %>},
+note = {<%== $record -> {'data'} -> {'notes'}[0] %>},
+publisher = {<%== $record -> {'data'} -> {'imprint'}[0] -> {'imprint_name'} %>},
+address = {<%== $record -> {'data'} -> {'imprint'}[0] -> {'imprint_place'} %>},
+annote = { This record was exported from the Incunabula Short Title Catalogue (ISTC): http://data.cerl.org/istc/
+<%==  $record -> {'_id'} %>}
+}
